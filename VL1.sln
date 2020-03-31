@@ -21,11 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aids", "Aids\Aids.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{E4EEAC82-EF01-479B-8E39-A6D5AE02B2ED}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logi", "Logi", "{F00453DE-3AC2-4BD3-AA0F-3192C4A5028C}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Desktop\PROGE_Time recording log.xlsx = ..\..\..\Desktop\PROGE_Time recording log.xlsx
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
