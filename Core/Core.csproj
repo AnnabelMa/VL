@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>VL1.Core</AssemblyName>
+    <RootNamespace>VL1.Core</RootNamespace>
+  </PropertyGroup>
+
+</Project>
