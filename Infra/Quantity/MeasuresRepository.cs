@@ -3,7 +3,7 @@ using VL1.Data.Quantity;
 
 namespace VL1.Infra.Quantity
 {
-    public class MeasuresRepository : UniqueEntityRepository<Measure, MeasureData>, IMeasuresRepository
+    public sealed class MeasuresRepository : UniqueEntityRepository<Measure, MeasureData>, IMeasuresRepository
     {
         public MeasuresRepository(QuantityDbContext c) : base(c, c.Measures) {}
 
