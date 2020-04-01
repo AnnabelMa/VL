@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,8 +11,8 @@ using VL1.Infra.Quantity;
 namespace VL1.Tests.Infra
 {
     [TestClass]
-    public class PaginatedRepositoryTests:
-        AbstractClassTests<PaginatedRepository<Measure,MeasureData>, FilteredRepository<Measure, MeasureData>>
+    public class PaginatedRepositoryTests :
+        AbstractClassTests<PaginatedRepository<Measure, MeasureData>, FilteredRepository<Measure, MeasureData>>
     {
         private class testClass : PaginatedRepository<Measure, MeasureData>
         {
@@ -22,10 +21,11 @@ namespace VL1.Tests.Infra
             protected internal override Measure toDomainObject(MeasureData d) => new Measure(d);
 
             protected override async Task<MeasureData> getData(string id)
-            => await dbSet.FirstOrDefaultAsync(m => m.Id == id);
+                => await dbSet.FirstOrDefaultAsync(m => m.Id == id);
 
             protected override string getId(Measure entity) => entity?.Data?.Id;
         }
+
         private byte count;
 
         [TestInitialize]
@@ -40,24 +40,24 @@ namespace VL1.Tests.Infra
             obj = new testClass(c, c.Measures);
             count = GetRandom.UInt8(10, 30);
             foreach (var p in c.Measures)
-            {
                 c.Entry(p).State = EntityState.Deleted;
-                AddItems();
-            }
+            addItems();
         }
 
         [TestMethod]
         public void PageIndexTest()
         {
-            IsProperty(() => obj.PageIndex, x =>obj.PageIndex=x);
+            IsProperty(() => obj.PageIndex, x => obj.PageIndex = x);
         }
+
         [TestMethod]
         public void TotalPagesTest()
         {
-            var expected = (int) Math.Ceiling(count / (double) obj.PageSize);
+            var expected = (int)Math.Ceiling(count / (double)obj.PageSize);
             var totalPagesCount = obj.TotalPages;
             Assert.AreEqual(expected, totalPagesCount);
         }
+
         [TestMethod]
         public void HasNextPageTest()
         {
@@ -68,8 +68,10 @@ namespace VL1.Tests.Infra
                 Assert.AreEqual(expected, actual);
             }
             testNextPage(0, true);
+            testNextPage(GetRandom.Int32(1, obj.TotalPages - 1), true);
             testNextPage(obj.TotalPages, false);
         }
+
         [TestMethod]
         public void HasPreviousPageTest()
         {
@@ -80,7 +82,8 @@ namespace VL1.Tests.Infra
                 Assert.AreEqual(expected, actual);
             }
             testPreviousPage(0, false);
-            testPreviousPage(obj.TotalPages-1, true); 
+            testPreviousPage(GetRandom.Int32(1, obj.TotalPages - 1), true);
+            testPreviousPage(obj.TotalPages, true);
         }
 
         [TestMethod]
@@ -89,6 +92,7 @@ namespace VL1.Tests.Infra
             Assert.AreEqual(5, obj.PageSize);
             IsProperty(() => obj.PageSize, x => obj.PageSize = x);
         }
+
         [TestMethod]
         public void GetTotalPagesTest()
         {
@@ -96,6 +100,7 @@ namespace VL1.Tests.Infra
             var totalPagesCount = obj.getTotalPages(obj.PageSize);
             Assert.AreEqual(expected, totalPagesCount);
         }
+
         [TestMethod]
         public void CountTotalPagesTest()
         {
@@ -103,14 +108,15 @@ namespace VL1.Tests.Infra
             var totalPagesCount = obj.countTotalPages(count, obj.PageSize);
             Assert.AreEqual(expected, totalPagesCount);
         }
+
         [TestMethod]
         public void GetItemsCountTest()
         {
             var itemsCount = obj.getItemsCount();
-            Assert.AreEqual(0, itemsCount);
+            Assert.AreEqual(count, itemsCount);
         }
 
-        private void AddItems()
+        private void addItems()
         {
             for (var i = 0; i < count; i++)
                 obj.Add(new Measure(GetRandom.Object<MeasureData>())).GetAwaiter();
@@ -119,12 +125,17 @@ namespace VL1.Tests.Infra
         [TestMethod]
         public void CreateSqlQueryTest()
         {
-            Assert.Inconclusive();
+            var o = obj.createSqlQuery();
+            Assert.IsNotNull(o);
         }
+
         [TestMethod]
         public void AddSkipAndTakeTest()
         {
-            Assert.Inconclusive();
+            var sql = obj.createSqlQuery();
+
+            var o = obj.addSkipAndTake(sql);
+            Assert.IsNotNull(o);
         }
     }
 }
