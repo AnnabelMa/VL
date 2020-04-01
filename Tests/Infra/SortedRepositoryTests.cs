@@ -21,16 +21,20 @@ namespace VL1.Tests.Infra
         {
             public testClass(DbContext c, DbSet<MeasureData> s) : base(c, s)
             {
-            } 
-            protected internal override Measure toDomainObject(MeasureData d) =>new Measure(d);
-            
+            }
 
-        protected override async  Task<MeasureData> getData(string id)
+            protected internal override Measure toDomainObject(MeasureData d) => new Measure(d);
+
+
+            protected override async Task<MeasureData> getData(string id)
             {
                 await Task.CompletedTask;
                 return new MeasureData();
-            } 
+            }
+
+            protected override string getId(Measure entity) => entity?.Data?.Id;
         }
+
         [TestInitialize]
         public override void TestInitialize()
         {

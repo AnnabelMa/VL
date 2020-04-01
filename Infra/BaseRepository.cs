@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using VL1.Data.Common;
 using VL1.Domain.Common;
@@ -71,10 +72,13 @@ namespace VL1.Infra
         }
         public async Task Update(TDomain obj)
         {
-            db.Attach(obj.Data).State = EntityState.Modified;
-
-            try{ await db.SaveChangesAsync();}
-            catch (DbUpdateConcurrencyException) { }
+            if (obj is null) return;
+            var v = await dbSet.FindAsync(getId(obj));
+            if (v is null) return;
+            dbSet.Remove(v);
+            dbSet.Add(obj.Data);
+            await db.SaveChangesAsync();
         }
+        protected abstract string getId(TDomain entity);
     }
 }

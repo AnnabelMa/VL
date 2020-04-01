@@ -13,5 +13,7 @@ namespace VL1.Infra
 
         protected override async Task<TData> getData(string id)
             => await dbSet.FirstOrDefaultAsync(m => m.Id == id);
+
+        protected override string getId(TDomain entity) => entity?.Data?.Id;
     }
 }
