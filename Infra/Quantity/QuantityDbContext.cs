@@ -9,8 +9,8 @@ namespace VL1.Infra.Quantity
         public DbSet<UnitData> Units { get; set; }
         public DbSet<SystemOfUnitsData> SystemsOfUnits { get; set; }
         public DbSet<UnitFactorData> UnitFactors { get; set; }
-        public DbSet<UnitFactorData> MeasureTerms { get; set; }
-        public DbSet<UnitFactorData> UnitTerms { get; set; }
+        public DbSet<MeasureTermData> MeasureTerms { get; set; }
+        public DbSet<UnitTermData> UnitTerms { get; set; }
 
         public QuantityDbContext(DbContextOptions<QuantityDbContext> options)
             : base(options) { }

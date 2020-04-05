@@ -117,7 +117,5 @@ namespace VL1.Infra.Quantity {
                     });
             }
         }
-
     }
-
 }
