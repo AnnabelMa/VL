@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VL1.Soft.Data;
 
 namespace VL1.Soft.Migrations
@@ -17,33 +18,6 @@ namespace VL1.Soft.Migrations
                 .HasAnnotation("ProductVersion", "3.1.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Facade.Quantity.MeasureView", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Definition")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ValidFrom")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ValidTo")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MeasureView");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -270,6 +244,28 @@ namespace VL1.Soft.Migrations
                     b.ToTable("Measures");
                 });
 
+            modelBuilder.Entity("VL1.Data.Quantity.MeasureTermData", b =>
+                {
+                    b.Property<string>("MasterId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("TermId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Power")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ValidFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ValidTo")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("MasterId", "TermId");
+
+                    b.ToTable("MeasureTerms");
+                });
+
             modelBuilder.Entity("VL1.Data.Quantity.SystemOfUnitsData", b =>
                 {
                     b.Property<string>("Id")
@@ -343,6 +339,54 @@ namespace VL1.Soft.Migrations
                     b.HasKey("UnitId", "SystemOfUnitsId");
 
                     b.ToTable("UnitFactors");
+                });
+
+            modelBuilder.Entity("VL1.Data.Quantity.UnitTermData", b =>
+                {
+                    b.Property<string>("MasterId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("TermId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Power")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ValidFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ValidTo")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("MasterId", "TermId");
+
+                    b.ToTable("UnitTerms");
+                });
+
+            modelBuilder.Entity("VL1.Facade.Quantity.MeasureView", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Definition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ValidFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ValidTo")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MeasureView");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

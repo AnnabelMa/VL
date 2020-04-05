@@ -64,28 +64,27 @@ namespace VL1.Tests.Infra.Quantity {
             testEntity<UnitFactorData>(builder, x =>x.UnitId, x=> x.SystemOfUnitsId);
         }
 
-        //[TestMethod]
-        //public void MeasuresTest() =>
-        //    IsNullableProperty(obj, nameof(obj.Measures), typeof(DbSet<MeasureData>));
+        [TestMethod]
+        public void MeasuresTest() =>
+            IsNullableProperty(obj, nameof(obj.Measures), typeof(DbSet<MeasureData>)) ;
 
-        //[TestMethod] public void UnitsTest() => IsNullableProperty(obj, nameof(obj.Units), typeof(DbSet<UnitData>));
+        [TestMethod] public void UnitsTest() => IsNullableProperty(obj, nameof(obj.Units), typeof(DbSet<UnitData>));
 
-        //[TestMethod]
-        //public void SystemsOfUnitsTest() =>
-        //    IsNullableProperty(obj, nameof(obj.SystemsOfUnits), typeof(DbSet<SystemOfUnitsData>));
+        [TestMethod]
+        public void SystemsOfUnitsTest() =>
+            IsNullableProperty(obj, nameof(obj.SystemsOfUnits), typeof(DbSet<SystemOfUnitsData>));
 
-        //[TestMethod]
-        //public void UnitFactorsTest() =>
-        //    IsNullableProperty(obj, nameof(obj.UnitFactors), typeof(DbSet<UnitFactorData>));
+        [TestMethod]
+        public void UnitFactorsTest() =>
+            IsNullableProperty(obj, nameof(obj.UnitFactors), typeof(DbSet<UnitFactorData>));
 
-        //[TestMethod]
-        //public void UnitTermsTest() =>
-        //    IsNullableProperty(obj, nameof(obj.UnitTerms), typeof(DbSet<UnitTermData>));
+        [TestMethod]
+        public void UnitTermsTest() =>
+            IsNullableProperty(obj, nameof(obj.UnitTerms), typeof(DbSet<UnitTermData>));
 
-        //[TestMethod]
-        //public void MeasureTermsTest() =>
-        //    IsNullableProperty(obj, nameof(obj.MeasureTerms), typeof(DbSet<MeasureTermData>));
+        [TestMethod]
+        public void MeasureTermsTest() =>
+            IsNullableProperty(obj, nameof(obj.MeasureTerms), typeof(DbSet<MeasureTermData>));
 
     }
-
 }

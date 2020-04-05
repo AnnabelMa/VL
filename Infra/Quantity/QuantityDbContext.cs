@@ -13,9 +13,7 @@ namespace VL1.Infra.Quantity
         public DbSet<UnitFactorData> UnitTerms { get; set; }
 
         public QuantityDbContext(DbContextOptions<QuantityDbContext> options)
-            : base(options)
-        {
-        }
+            : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -31,7 +29,6 @@ namespace VL1.Infra.Quantity
             builder.Entity<UnitFactorData>().ToTable(nameof(UnitFactors)).HasKey(x=>new { x.UnitId, x.SystemOfUnitsId});
             builder.Entity<MeasureTermData>().ToTable(nameof(MeasureTerms)).HasKey(x => new { x.MasterId, x.TermId });
             builder.Entity<UnitTermData>().ToTable(nameof(UnitTerms)).HasKey(x => new { x.MasterId, x.TermId });
-
         }
     }
 }

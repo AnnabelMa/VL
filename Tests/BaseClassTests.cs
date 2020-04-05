@@ -18,8 +18,14 @@ namespace VL1.Tests
         {
             Assert.AreEqual(typeof(TBaseClass), type.BaseType);
         }
+        protected static void IsNullableProperty<T>(Func<T> get, Action<T> set)
+        {
+            IsProperty(get, set);
+            set(default);
+            Assert.IsNull(get());
+        }
 
-        protected static void IsNullableProperty<T>(object o, string name, Type type)
+        protected static void IsNullableProperty(object o, string name, Type type)
         {
             var property = o.GetType().GetProperty(name);
             Assert.IsNotNull(property);
