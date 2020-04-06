@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VL1.Aids;
 using VL1.Data.Common;
@@ -9,17 +10,44 @@ namespace VL1.Tests.Infra
     [TestClass]
     public abstract class RepositoryTests<TRepository, TObject, TData> :
         BaseTests
-    where TRepository: IRepository<TObject>
-    where TObject: Entity<TData>
-    where TData: PeriodData, new()
+        where TRepository: IRepository<TObject>
+        where TObject: Entity<TData>
+        where TData: PeriodData, new()
     {
-        private TData data;
+        protected TData data;
         protected TRepository obj;
+        protected DbContext db;
+        protected int count;
+        protected DbSet<TData> dbSet;
 
         public virtual void TestInitialize()
         {
             type =typeof(TRepository);
             data = GetRandom.Object<TData>();
+            count = GetRandom.UInt8(20, 40);
+            CleanDbSet();
+            addItems();
+        }
+        protected void testGetList()
+        {
+            obj.PageIndex = GetRandom.Int32(2, obj.TotalPages - 1);
+            var l = obj.Get().GetAwaiter().GetResult();
+            Assert.AreEqual(obj.PageSize, l.Count);
+        }
+
+        [TestCleanup]
+        public void TestCleanUp() =>CleanDbSet();
+        
+        protected void CleanDbSet()
+        {
+            foreach (var p in dbSet)
+                db.Entry(p).State = EntityState.Deleted;
+            db.SaveChanges();
+        }
+        protected void addItems()
+        {
+            for (var i = 0; i < count; i++)
+                obj.Add(getObject(GetRandom.Object<TData>())).GetAwaiter();
         }
 
         [TestMethod]
@@ -32,8 +60,6 @@ namespace VL1.Tests.Infra
 
         [TestMethod]
         public void GetTest()=>testGetList();
-
-        protected abstract void testGetList();
 
         [TestMethod]
         public void GetByIdTest()=>AddTest();
@@ -62,7 +88,6 @@ namespace VL1.Tests.Infra
             expected = obj.Get(id).GetAwaiter().GetResult();
             TestArePropertyValuesEqual(data, expected.Data);
         }
-
         protected abstract TObject getObject(TData d);
 
         [TestMethod]
