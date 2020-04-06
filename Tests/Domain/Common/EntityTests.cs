@@ -43,9 +43,6 @@ namespace VL1.Tests.Domain.Common
         [TestMethod]
         public void CanSetNullDataTest()
         {
-            var d = GetRandom.Object<MeasureData>();
-            obj = new testClass(d);
-            Assert.IsNotNull(obj.Data);
             obj.Data = null;
             Assert.IsNull(obj.Data);
         }

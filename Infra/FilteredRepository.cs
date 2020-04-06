@@ -52,7 +52,6 @@ namespace VL1.Infra
         {
             if (string.IsNullOrEmpty(SearchString)) return query;
             var expression = CreateWhereExpression();
-
             return expression is null ? query : query.Where(expression);
         }
 
@@ -60,9 +59,7 @@ namespace VL1.Infra
         {
             if (string.IsNullOrWhiteSpace(SearchString)) return null;
             var param = Expression.Parameter(typeof(TData), "s");
-            
             Expression predicate = null;
-
             foreach (var p in typeof(TData).GetProperties())//käib läbi kõik TData propertyd
             {
                 Expression body = Expression.Property(param, p);

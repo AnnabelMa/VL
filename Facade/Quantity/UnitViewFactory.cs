@@ -1,4 +1,5 @@
 ﻿using VL1.Aids;
+using VL1.Data.Quantity;
 using VL1.Domain.Quantity;
 
 namespace VL1.Facade.Quantity
@@ -7,15 +8,16 @@ namespace VL1.Facade.Quantity
     {
         public static Unit Create(UnitView v) //v-view
         {
-            var o = new Unit();
-            Copy.Members(v, o.Data);
+            var d = new UnitData();
+            Copy.Members(v, d);
            
-            return o;
+            return new Unit(d);
         }
         public static UnitView Create(Unit o) //o-object
         {
             var v = new UnitView();
-            Copy.Members(o.Data, v);
+            if (!(o?.Data is null))
+                Copy.Members(o.Data, v);
             
             return v;
         }

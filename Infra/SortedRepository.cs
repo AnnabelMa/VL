@@ -26,7 +26,6 @@ namespace VL1.Infra
         protected internal IQueryable<TData> addSorting(IQueryable<TData> query)
         {
             var expression = createExpression();
-            
             var r = expression is null ? query : addOrderBy(query, expression);
             return r;
         }

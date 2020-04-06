@@ -1,4 +1,5 @@
 ﻿using VL1.Aids;
+using VL1.Data.Quantity;
 using VL1.Domain.Quantity;
 
 namespace VL1.Facade.Quantity
@@ -7,16 +8,16 @@ namespace VL1.Facade.Quantity
     {
         public static Measure Create(MeasureView v) //v-view
         {
-            var o = new Measure();
-            Copy.Members(v, o.Data);
-            
-            return o;
+            var d = new MeasureData();
+            Copy.Members(v,d);
+
+            return new Measure(d);
         }
         public static MeasureView Create(Measure o) //o-object
         {
             var v = new MeasureView();
-            Copy.Members(o.Data, v);
-           
+            if (!(o?.Data is null))
+                Copy.Members(o.Data, v);
             return v;
         }
     }

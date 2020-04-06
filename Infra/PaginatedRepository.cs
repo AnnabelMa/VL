@@ -25,10 +25,7 @@ namespace VL1.Infra
             return pages;
         }
 
-        internal int countTotalPages(int count, int pageSize)
-        {
-            return (int)Math.Ceiling(count / (double)pageSize);
-        }
+        internal int countTotalPages(int count, int pageSize)=> (int)Math.Ceiling(count / (double)pageSize);
 
         internal  int getItemsCount() => base.createSqlQuery().CountAsync().Result;
         //resulti abil saab asünkroonset meetodit kutsuda välja sünkroonses meetodis
