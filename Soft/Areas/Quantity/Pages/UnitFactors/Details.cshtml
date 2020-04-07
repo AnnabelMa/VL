@@ -1,0 +1,18 @@
+﻿@page
+@using VL1.Aids
+@using VL1.Data.Quantity
+@using VL1.Pages.Extensions
+@model VL1.Soft.Areas.Quantity.Pages.UnitFactors.DetailsModel
+
+@{
+    Layout = "_Details";
+}
+<body>
+    @Html.DisplayControlsFor(m => m.Item.SystemOfUnitsId)
+    @Html.DisplayControlsFor(m => m.Item.UnitId)
+    @Html.DisplayControlsFor(m => m.Item.Factor)
+    @Html.DisplayControlsFor(m => m.Item.ValidFrom)
+    @Html.DisplayControlsFor(m => m.Item.ValidTo)
+</body>
+@section Details{
+}

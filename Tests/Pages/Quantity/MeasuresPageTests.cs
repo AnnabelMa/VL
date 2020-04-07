@@ -52,7 +52,7 @@ namespace VL1.Tests.Pages.Quantity
         public void ToObjectTest()
         {
             var view = GetRandom.Object<MeasureView>();
-            var o = obj.ToObject(view);
+            var o = obj.toObject(view);
             TestArePropertyValuesEqual(view, o.Data);
         }
 
@@ -60,7 +60,7 @@ namespace VL1.Tests.Pages.Quantity
         public void ToViewTest()
         {
             var data = GetRandom.Object<MeasureData>();
-            var view = obj.ToView(new Measure(data));
+            var view = obj.toView(new Measure(data));
             TestArePropertyValuesEqual(view, data);
         }
     }

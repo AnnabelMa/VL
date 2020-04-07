@@ -1,5 +1,4 @@
-﻿
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace VL1.Facade.Quantity
@@ -9,5 +8,10 @@ namespace VL1.Facade.Quantity
         [Required]
         [DisplayName("Measure")]
         public string MasterId { get; set; }
+
+        public string GetId()
+        {
+            return $"{MasterId}.{TermId}";
+        }
     }
 }

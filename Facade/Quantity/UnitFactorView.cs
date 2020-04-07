@@ -13,5 +13,10 @@ namespace VL1.Facade.Quantity
         [DisplayName("SystemOfUnits")]
         public string SystemOfUnitsId { get; set; }
         public double Factor { get; set; }
+
+        public string GetId()
+        {
+            return $"{SystemOfUnitsId}.{UnitId}";
+        }
     }
 }

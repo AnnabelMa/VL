@@ -18,7 +18,7 @@ namespace VL1.Soft.Areas.Quantity.Pages.Measures
 
         public async Task<IActionResult> OnPostAsync(string fixedFilter, string fixedValue)
         {
-            if (!await AddObject(fixedFilter, fixedValue)) return Page();
+            if (!await addObject(fixedFilter, fixedValue)) return Page();
             return Redirect(IndexUrl);
         }
     }

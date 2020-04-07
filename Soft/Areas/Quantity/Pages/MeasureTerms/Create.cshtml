@@ -1,0 +1,17 @@
+﻿@page
+@using VL1.Pages.Extensions
+@model VL1.Soft.Areas.Quantity.Pages.MeasureTerms.CreateModel
+
+@{
+    Layout = "_Create";
+}
+
+<body>
+
+    @Html.EditControlsFor(x => x.Item.MasterId)
+    @Html.EditControlsFor(x => x.Item.TermId)
+    @Html.EditControlsFor(x => x.Item.Power)
+    @Html.EditControlsFor(x => x.Item.ValidFrom)
+    @Html.EditControlsFor(x => x.Item.ValidTo)
+
+</body>

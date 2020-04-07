@@ -10,13 +10,13 @@ namespace VL1.Soft.Areas.Quantity.Pages.Measures
         public DeleteModel(IMeasuresRepository r) : base(r) { }
         public async Task<IActionResult> OnGetAsync(string id, string fixedFilter, string fixedValue)
         {
-            await GetObject(id, fixedFilter, fixedValue);
+            await getObject(id, fixedFilter, fixedValue);
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(string id, string fixedFilter, string fixedValue)
         {
-            await DeleteObject(id, fixedFilter, fixedValue);
+            await deleteObject(id, fixedFilter, fixedValue);
             return Redirect(IndexUrl);
         }
     }

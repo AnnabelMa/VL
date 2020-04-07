@@ -1,0 +1,18 @@
+﻿@page
+@using VL1.Aids
+@using VL1.Data.Quantity
+@using VL1.Pages.Extensions
+@model VL1.Soft.Areas.Quantity.Pages.MeasureTerms.DetailsModel
+
+@{
+    Layout = "_Details";
+}
+<body>
+    @Html.DisplayControlsFor(m => m.Item.MasterId)
+    @Html.DisplayControlsFor(m => m.Item.TermId)
+    @Html.DisplayControlsFor(m => m.Item.Power)
+    @Html.DisplayControlsFor(m => m.Item.ValidFrom)
+    @Html.DisplayControlsFor(m => m.Item.ValidTo)
+</body>
+@section Details{
+}

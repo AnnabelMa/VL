@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace VL1.Facade.Quantity
 {
@@ -11,5 +8,9 @@ namespace VL1.Facade.Quantity
         [Required]
         [DisplayName("Unit")]
         public string MasterId { get; set; }
+        public string GetId()
+        {
+            return $"{MasterId}.{TermId}";
+        }
     }
 }
