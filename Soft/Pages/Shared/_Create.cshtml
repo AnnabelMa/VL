@@ -1,13 +1,13 @@
 ﻿@{
     Layout = "_Layout";
     ViewData["Title"] = Model.PageTitle;
-    ViewData["Subtitle"] = Model.PageSubtitle ?? "Create";
+    ViewData["SubTitle"] = Model.PageSubTitle ?? "Create";
 }
 <p>>
     <h1> @ViewData["Title"]</h1>
 </p>
 
-<h4> @ViewData["Subtitle"]</h4>
+<h4> @ViewData["SubTitle"]</h4>
 
 <hr />
 <div class="row">

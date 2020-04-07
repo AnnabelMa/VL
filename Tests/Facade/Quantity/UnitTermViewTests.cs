@@ -9,5 +9,13 @@ namespace VL1.Tests.Facade.Quantity
         [TestMethod]
         public void MasterIdTest() =>
             IsNullableProperty(() => obj.MasterId, x => obj.MasterId = x);
+
+        [TestMethod]
+        public void GetIdTest()
+        {
+            var actual = obj.GetId();
+            var expected = $"{obj.MasterId}.{obj.TermId}";
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
