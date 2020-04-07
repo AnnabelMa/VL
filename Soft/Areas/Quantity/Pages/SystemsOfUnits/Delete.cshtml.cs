@@ -3,21 +3,20 @@ using Microsoft.AspNetCore.Mvc;
 using VL1.Domain.Quantity;
 using VL1.Pages.Quantity;
 
-namespace VL1.Soft.Areas.Quantity.Pages.SystemOfUnits
+namespace VL1.Soft.Areas.Quantity.Pages.SystemsOfUnits
 {
-    public class EditModel : SystemsOfUnitsPage
+    public class DeleteModel : SystemsOfUnitsPage
     {
-        public EditModel(ISystemsOfUnitsRepository r) : base(r) { }
-
+        public DeleteModel(ISystemsOfUnitsRepository r) : base(r) { }
         public async Task<IActionResult> OnGetAsync(string id, string fixedFilter, string fixedValue)
         {
             await getObject(id, fixedFilter, fixedValue);
             return Page();
         }
-       
-        public async Task<IActionResult> OnPostAsync(string fixedFilter, string fixedValue)
+
+        public async Task<IActionResult> OnPostAsync(string id, string fixedFilter, string fixedValue)
         {
-            await updateObject(fixedFilter, fixedValue);
+            await deleteObject(id, fixedFilter, fixedValue);
             return Redirect(IndexUrl);
         }
     }

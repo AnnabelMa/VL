@@ -10,8 +10,8 @@ using VL1.Soft.Data;
 namespace VL1.Soft.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200405084803_initial")]
-    partial class initial
+    [Migration("20200407132811_initialize")]
+    partial class initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
