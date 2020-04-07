@@ -35,7 +35,7 @@ namespace VL1.Tests.Domain.Common
         public void DataIsNullTest()
         {
             var d = GetRandom.Object<MeasureData>();
-            Assert.IsNotNull(obj.Data);
+            Assert.IsNull(obj.Data); //või ISNOTNULL?
             obj.Data = d;
             Assert.AreSame(d, obj.Data);
         }

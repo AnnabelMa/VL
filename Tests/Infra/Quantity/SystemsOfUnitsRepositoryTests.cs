@@ -9,7 +9,7 @@ using VL1.Infra.Quantity;
 namespace VL1.Tests.Infra.Quantity
 {
     [TestClass]
-    public class SystemOfUnitsRepositoryTests : RepositoryTests<SystemsOfUnitsRepository, SystemOfUnits, SystemOfUnitsData>
+    public class SystemsOfUnitsRepositoryTests : RepositoryTests<SystemsOfUnitsRepository, SystemOfUnits, SystemOfUnitsData>
     {
         [TestInitialize]
         public override void TestInitialize()

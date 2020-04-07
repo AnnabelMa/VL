@@ -21,9 +21,7 @@ namespace VL1.Infra.Quantity {
         }
 
         protected override string getId(MeasureTerm obj) {
-            return obj?.Data is null ? string.Empty : $"{obj.Data.MasterId}:{obj.Data.TermId}";
+            return obj?.Data is null ? string.Empty : $"{obj.Data.MasterId}.{obj.Data.TermId}";
         }
-
     }
-
 }
