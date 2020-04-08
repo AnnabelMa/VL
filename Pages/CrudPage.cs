@@ -4,7 +4,7 @@ using VL1.Domain.Common;
 
 namespace VL1.Pages {
 
-    public abstract class CrudPage<TRepository, TDomain, TView, TData> :
+   public abstract class CrudPage<TRepository, TDomain, TView, TData> :
         BasePage<TRepository, TDomain, TView, TData>
         where TRepository : ICrudMethods<TDomain>, ISorting, IFiltering, IPaging {
 
@@ -73,5 +73,7 @@ namespace VL1.Pages {
         protected internal abstract TDomain toObject(TView view);
 
         protected internal abstract TView toView(TDomain obj);
+
+
     }
 }

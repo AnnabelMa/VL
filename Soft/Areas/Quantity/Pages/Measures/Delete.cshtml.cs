@@ -7,7 +7,7 @@ namespace VL1.Soft.Areas.Quantity.Pages.Measures
 {
     public class DeleteModel : MeasuresPage
     {
-        public DeleteModel(IMeasuresRepository r) : base(r) { }
+        public DeleteModel(IMeasuresRepository r, IMeasureTermsRepository t) : base(r, t) { }
         public async Task<IActionResult> OnGetAsync(string id, string fixedFilter, string fixedValue)
         {
             await getObject(id, fixedFilter, fixedValue);
