@@ -20,10 +20,12 @@ namespace VL1.Tests.Pages {
             isReadOnlyProperty(obj, nameof(obj.Items), null);
         }
 
-        [TestMethod] public void PageIndexTest() {
+        [TestMethod]
+        public void PageIndexTest()
+        {
             var i = GetRandom.UInt8(3);
             obj.PageIndex = i;
-            Assert.AreEqual((object) i, db.PageIndex);
+            Assert.AreEqual(i, db.PageIndex);
             Assert.AreEqual(i, obj.PageIndex);
         }
 
@@ -69,6 +71,12 @@ namespace VL1.Tests.Pages {
                 l = obj.getList().GetAwaiter().GetResult();
                 Assert.AreEqual(i + 1, l.Count);
             }
+        }
+
+        [TestMethod]
+        public void SelectedIdTest()
+        {
+            Assert.Inconclusive();
         }
 
     }
