@@ -5,12 +5,12 @@ using VL1.Domain.Common;
 
 namespace VL1.Tests
 {
-    internal class baseTestRepository<TObj, TData> 
+    internal class baseTestRepositoryForUniqueEntity<TObj, TData> 
         where TObj: Entity<TData>
         where TData: UniqueEntityData, new()
     {
         internal readonly List<TObj> list;
-        public baseTestRepository()
+        public baseTestRepositoryForUniqueEntity()
         {
             list = new List<TObj>();
         }

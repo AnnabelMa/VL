@@ -15,27 +15,22 @@ namespace VL1.Tests.Pages.Quantity
     {
         private class testClass : UnitsPage
         {
-            internal testClass(IUnitsRepository r, IMeasuresRepository m,
-                IUnitTermsRepository t, IUnitFactorsRepository f) : base(r, m, t, f)
+            internal testClass(IUnitsRepository r, IMeasuresRepository m) : base(r, m, null, null)
             {
             }
         }
-        private class unitsRepository : baseTestRepository<Unit, UnitData>, IUnitsRepository { }
-        private class measuresRepository : baseTestRepository<Measure, MeasureData>, IMeasuresRepository { }
-        //private class unitTermsRepository : baseTestRepository<UnitTerm, UnitTermData>, IUnitTermsRepository { }
-
-
+        private class unitsRepository : baseTestRepositoryForUniqueEntity<Unit, UnitData>, IUnitsRepository { }
+        private class measuresRepository : baseTestRepositoryForUniqueEntity<Measure, MeasureData>, IMeasuresRepository { }
 
         private unitsRepository units;
         private measuresRepository measures;
         private MeasureData data;
-        //private unitTermsRepository unitTerms;
 
         [TestInitialize]
-        public override void TestInitialize() 
+        public override void TestInitialize()
         {
             base.TestInitialize();
-            units = new unitsRepository(); 
+            units = new unitsRepository();
             measures = new measuresRepository();
             data = GetRandom.Object<MeasureData>();
             var m = new Measure(data);

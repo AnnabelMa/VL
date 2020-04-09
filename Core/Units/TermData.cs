@@ -8,7 +8,5 @@
         }
         public string TermId;
         public sbyte Power;
-
     }
-
 }

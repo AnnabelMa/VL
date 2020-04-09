@@ -46,13 +46,15 @@ namespace VL1.Tests.Pages {
             TestArePropertyValuesEqual(db.list[^1].Data, obj.Item);
         }
 
-        [TestMethod] public void GetObjectTest() {
+        [TestMethod]
+        public void GetObjectTest()
+        {
             var count = GetRandom.UInt8(5, 10);
             var idx = GetRandom.UInt8(0, count);
             for (var i = 0; i < count; i++) AddObjectTest();
             var item = db.list[idx];
             obj.getObject(item.Data.Id, fixedFilter, fixedValue).GetAwaiter();
-            Assert.AreEqual((object) count, db.list.Count);
+            Assert.AreEqual(count, db.list.Count);
             TestArePropertyValuesEqual(item.Data, obj.Item);
         }
 

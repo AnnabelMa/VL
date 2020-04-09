@@ -11,7 +11,6 @@ namespace VL1.Pages.Quantity
         {
             PageTitle = "Systems Of Units";
         }
-
         public override string ItemId => Item.Id;
 
         protected internal override string getPageUrl() => "/Quantity/SystemsOfUnits";
